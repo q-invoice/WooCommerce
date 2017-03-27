@@ -116,6 +116,8 @@ if ( ! class_exists( 'WooCommerce_Qinvoice_Connect_Export' ) ) {
 				$date_format = get_option( 'date_format' );
 
 				$date = new DateTime($order_date[0]);
+
+				$method = get_post_meta($order_id,'_payment_method_title', true);
 				
 
 				$remark = $this->general_settings['invoice_remark'];
@@ -123,6 +125,7 @@ if ( ! class_exists( 'WooCommerce_Qinvoice_Connect_Export' ) ) {
 				$remark = str_replace('{order_number}', $this->order->get_order_number(), $remark);
 				$remark = str_replace('{order_date}', $date->format($date_format), $remark);
 				$remark = str_replace('{customer_note}', $excerpt, $remark);
+				$remark = str_replace('{method}', $method, $remark);
 				$paid_date = get_post_meta($order_id,'_paid_date', true);
 
 				$paid = 0;
@@ -131,7 +134,7 @@ if ( ! class_exists( 'WooCommerce_Qinvoice_Connect_Export' ) ) {
 					$paid = 1;
 				}
 				if($paid && $this->general_settings['send_payment_status'] != "no"){
-					$method = get_post_meta($order_id,'_payment_method_title', true);
+					
 					$paidremark = $this->general_settings['paid_remark'];
 					$remark .= ' '. str_replace('{method}', $method, $paidremark);
 				}else{
