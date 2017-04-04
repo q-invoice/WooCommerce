@@ -23,6 +23,8 @@ if ( !class_exists( 'qinvoice' ) ) {
 		public $address2;
 		public $city;
 		public $country;
+		public $delivery_firstname;
+		public $delivery_lastname;
 		public $delivery_address;
 		public $delivery_address2;
 	    public $delivery_zipcode;
@@ -150,6 +152,8 @@ if ( !class_exists( 'qinvoice' ) ) {
 								<zipcode><![CDATA['. $this->zipcode .']]></zipcode>
 								<city><![CDATA['. $this->city .']]></city>
 								<country><![CDATA['. $this->country .']]></country>
+								<delivery_firstname><![CDATA['. $this->delivery_firstname .']]></delivery_firstname>
+								<delivery_lastname><![CDATA['. $this->delivery_lastname .']]></delivery_lastname>
 								<delivery_address><![CDATA['. $this->delivery_address .']]></delivery_address>
 								<delivery_address2><![CDATA['. $this->delivery_address2 .']]></delivery_address2>
 								<delivery_zipcode><![CDATA['. $this->delivery_zipcode .']]></delivery_zipcode>
